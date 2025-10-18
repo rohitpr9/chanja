@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+.delete {
+    background: none;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+    border: 1px solid white;
+}
+
+.add {
+    background: none;
+    border: 2px solid black;
+    border-radius: 5px;
+
+}
+
+.addCustomer {
+    color: white;
+    background-color: brown;
+    border-radius: 5px;
+    border: 2px solid transparent;
+}
+
+@media only screen and (max-width:600px) {
+    .responsiveCard {
+        width: 100% !important;
+    }
+}

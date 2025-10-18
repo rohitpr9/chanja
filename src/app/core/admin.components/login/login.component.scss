@@ -1,0 +1,45 @@
+.login {
+
+    .card {
+        // max-width: 30%;
+        margin: 10% auto;
+        width: 406px;
+
+        .card-body {
+            .header {
+                h4 {}
+
+                h6 {
+                    i {
+                        color: lightsalmon;
+                    }
+                }
+            }
+
+            form {
+                .body {
+                    .row {
+                        .col-3 {
+                            label {}
+                        }
+
+                        .col-8 {
+                            input {}
+                        }
+
+                        .col-12 {
+                            button {
+                                    color: white;
+    background-color: brown;
+    border-radius: 5px;
+    border: 2px solid transparent;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+

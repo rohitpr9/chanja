@@ -1,0 +1,97 @@
+.list_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .list {
+        .list-body {
+            form {
+                .body {
+                    .card {
+                        background-color: #FFFF88;
+
+                        .card-header {
+                            background-color: #ffef84;
+                        }
+
+                        .card-body {
+                            .row {
+                                .col {
+                                    button {
+                                        padding: 2px 9px;
+
+                                    }
+                                }
+                            }
+
+                            .items_list {
+                                .items_container {
+                                    span {
+                                        text-decoration: underline;
+                                    }
+
+                                    .row {
+                                        .col {
+                                            button {}
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .add_customer {
+        button {
+            padding: 8px 20px;
+
+        }
+    }
+}
+
+.list_details_page {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    border: 1px solid;
+    padding-bottom: 1rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 32%;
+    row-gap: 10px;
+    padding-top: 1rem;
+    align-items: center;
+}
+
+.image {
+    display: block;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+
+}
+
+.hr {
+    border: 1px solid;
+}
+
+a {
+    cursor: pointer;
+}
+
+.list_details {
+    border-bottom: 1px solid;
+    padding-bottom: 1rem;
+}
+
+.view_imager{
+      padding-top: 1rem;
+}

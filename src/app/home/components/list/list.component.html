@@ -1,0 +1,97 @@
+<div class="list_details_page">
+    <div class="list_details">
+        <h4>Customer Details</h4>
+        <div class="list">
+            <div class="list-body">
+                <form [formGroup]="customerForm">
+                    <div class="body d-flex flex-column gap-3" formArrayName="customer">
+                        <ng-container *ngFor="let customers of customer.controls;let i = index" [formGroupName]="i">
+
+
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center justify-content-center">
+                                    <h5 class="text-center">ORDERED IN NAME OF : {{customerName.value}} </h5>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row mb-3 align-items-center">
+                                        <div class="col">
+                                            <label for="email">Customer Name</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" name="customer" class="form-control" value=""
+                                                formControlName="customerName" #customerName>
+                                        </div>
+                                    </div>
+                                    <div class="items_list" formArrayName="items">
+                                        <ng-container *ngFor="let categories of items(i).controls;let j = index"
+                                            [formGroupName]="j">
+                                            <div class="items_container">
+                                                <div class="row pb-2">
+                                                    <span class="text-center" style="text-underline-offset: 5px;
+    text-decoration-thickness: 2px;">
+                                                        Item no.{{j+1}}
+                                                    </span>
+                                                </div>
+
+                                                <div class="row mb-3 mt-2">
+                                                    <div class="col">
+                                                        <label for="email">Item Name </label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" name="customer" class="form-control"
+                                                            formControlName="itemName">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="email">Item Price </label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" name="customer" class="form-control"
+                                                            formControlName="price">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col text-center">
+                                            <button type="button" class="add" (click)="addItems(i)"> <i
+                                                    class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                    </div><button class="delete w-100" type="button" (click)="removeCustomer(i)">Delete
+                                        {{customerName.value}} if
+                                        Paid
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </ng-container>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="add_customer mt-3 pb-3">
+            <button type="button" (click)="addCusotmer()" class="addCustomer">Add Customer</button>
+
+        </div>
+    </div>
+    <div class="menu">
+        <h4>Menu</h4>
+        <a (click)="view('front')">
+            <img src="assets/front.jpg" class="image" alt="">
+        </a>
+
+        <a (click)="view('back')">
+            <img src="assets/back.jpg" class="image" alt="">
+
+        </a>
+    </div>
+
+    <div class="view_imager" *ngIf="image">
+        <img src="assets/front.jpg" class="image" alt="" *ngIf="image === 'front'">
+        <img src="assets/back.jpg" class="image" alt="" *ngIf="image === 'back'">
+    </div>
+</div>
