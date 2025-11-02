@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/home",
+    "/list",
+    "/login",
+    "/practise"
+  ]
+}
