@@ -92,6 +92,32 @@ a {
     padding-bottom: 1rem;
 }
 
-.view_imager{
-      padding-top: 1rem;
+.view_imager {
+    grid-row: 1;
+    width: 66vw;
+    margin-left: 56.4rem;
+    margin-top: 6px;
+    height: auto;
+    position: relative;
+
+}
+
+.close {
+    position: absolute;
+    right: 12px;
+    z-index: 999999999;
+    color: black;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width:600px) {
+    .view_imager {
+        position: relative;
+        top: 1rem !important;
+        width: 100% !important;
+        height: auto !important;
+        grid-row: none !important;
+        margin-left: unset !important;
+    }
 }

@@ -134,4 +134,8 @@ export class ListComponent implements OnInit {
   view(name: string) {
     this.image = name;
   }
+
+  close(){
+    this.image = ''
+  }
 }

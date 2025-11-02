@@ -91,6 +91,7 @@
     </div>
 
     <div class="view_imager" *ngIf="image">
+        <span class="close" (click)="close()"><i class="fa fa-close" style="font-size:36px"></i></span>
         <img src="assets/front.jpg" class="image" alt="" *ngIf="image === 'front'">
         <img src="assets/back.jpg" class="image" alt="" *ngIf="image === 'back'">
     </div>
