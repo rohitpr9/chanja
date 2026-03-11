@@ -1,0 +1,26 @@
+.login {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.pwd-icon {
+  height: auto;
+  width: 40px;
+  object-fit: contain;
+  top: 0;
+  left: 0;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  top: 0;
+  right: 0;
+}
+
+.login-btn{
+    background-color: transparent;
+    border-radius: 6px;
+    width: 100px;
+    padding: 8px;
+}
