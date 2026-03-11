@@ -1,0 +1,49 @@
+.customer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 8px;
+}
+
+.payment-card {
+  width: 426.66px;
+}
+
+.payment-card--paid {
+  padding: 0 7px;
+  background-color: transparent;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.disabled-customer-bill {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.payment-card__status--paid {
+  color: white;
+  background-color: green;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.payment-card__status--unpaid {
+  color: white;
+  background-color: red;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+@media only screen and (max-width: 480px) {
+  .customer {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+
+  .payment-card{
+    width: unset;
+  }
+}
