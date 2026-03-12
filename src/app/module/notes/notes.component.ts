@@ -18,14 +18,16 @@ export class NotesComponent implements OnInit {
   ngOnInit(): void {
     this._buildForm()
     this.isPaid.fill(false)
+
   }
 
-
+  // this.getCustomerDetails
   private _buildForm() {
+    const value = JSON.parse(localStorage.getItem('client') ?? '{}')
     this.formGroup = this._formBuilder.group({
-      customerDetails: this._formBuilder.array([
-        this.getCustomerDetails
-      ])
+      customerDetails: this._formBuilder.array((value.customerDetails??[]).map((details: any) => {
+        this.getCustomerDetails(details)
+      }))
     })
   }
 
@@ -34,33 +36,48 @@ export class NotesComponent implements OnInit {
   }
 
 
-  public get getCustomerDetails(): FormGroup {
+  public items(index: number): FormArray<FormGroup> {
+    return this.customerDetails.at(index).get('items') as FormArray<FormGroup>
+  }
+
+  // this.getItems
+  public getCustomerDetails(value?: any): FormGroup {
     return this._formBuilder.group({
-      name: [''],
-      items: this._formBuilder.array([
-        this.getItems
-      ]),
+      name: [value.name || ''],
+      items: this._formBuilder.array((value.items || []).map((item: any) => {
+        this.getItems(item)
+      })),
     })
   }
 
-  public get getItems(): FormGroup {
+
+  public getItems(item?: any): FormGroup {
     return this._formBuilder.group({
-      itemName: [''],
-      itemCount: [0],
+      itemName: [item.itemName || ''],
+      itemCount: [item.itemName || 0],
     })
   }
 
 
   public addCustomer(): void {
-    this.customerDetails.push(this.getCustomerDetails)
+    this.customerDetails.push(this.getCustomerDetails())
   }
 
   public paidByCustomer(bill: string, index: number): void {
     this.isPaid[index] = bill === 'paid'
+    localStorage.setItem('isPaid', JSON.stringify(this.isPaid[index]))
+
+
+  }
+
+
+  public addItem(index: number): void {
+    const value = (this.customerDetails.at(index)).get('items') as FormArray<FormGroup>
+    value.push(this.getItems())
   }
 
   public onSubmit(): void {
-
+    localStorage.setItem('client', JSON.stringify(this.formGroup.value))
   }
 
 
