@@ -38,6 +38,13 @@
   padding: 4px;
 }
 
+
+.scroll-max-height {
+  height: 200px;
+  overflow-y: scroll;
+  scrollbar-width:hidden ;
+}
+
 @media only screen and (max-width: 480px) {
   .customer {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
