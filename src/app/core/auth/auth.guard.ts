@@ -13,9 +13,11 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   const loginCredential = JSON.parse(raw)
 
-  if (loginCredential.email === 'chanja@gmail.com' && loginCredential.password === 'chanja@123') {
+  if (loginCredential) {
     return true
   }
-
+  else{
   return router.createUrlTree(['login'])
+  }
+
 };
