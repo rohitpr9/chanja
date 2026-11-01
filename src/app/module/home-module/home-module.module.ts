@@ -5,21 +5,26 @@ import { CalculatorComponent } from '../calculator/calculator.component';
 import { MenuComponent } from '../menu/menu.component';
 import { NotesComponent } from '../notes/notes.component';
 import { HomeComponent } from '../home/home.component';
-import { ɵInternalFormsSharedModule, ReactiveFormsModule } from "@angular/forms";
-
+import {
+  ɵInternalFormsSharedModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { ButtonComponent } from 'src/app/shared/button/button.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 @NgModule({
   declarations: [
     CalculatorComponent,
     MenuComponent,
     NotesComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,
     HomeModuleRoutingModule,
     ɵInternalFormsSharedModule,
-    ReactiveFormsModule
-]
+    ReactiveFormsModule,
+    SharedModule,
+  ],
 })
-export class HomeModuleModule { }
+export class HomeModuleModule {}
