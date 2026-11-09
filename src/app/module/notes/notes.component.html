@@ -1,0 +1,97 @@
+<form class="pt-4" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div formArrayName="customerDetails" class="customer">
+    <div
+      class="card payment-card"
+      *ngFor="let customer of customerDetails.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="card-header payment-card__header">
+        <div class="row">
+          <div class="col-6">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="Customer name"
+            />
+          </div>
+          <div class="col-6 d-flex align-items-center justify-content-end">
+            <span
+              [ngClass]="{
+                'payment-card__status payment-card__status--paid':
+                  isPaidByCustomer[i],
+                'payment-card__status payment-card__status--unpaid':
+                  !isPaidByCustomer[i],
+              }"
+              >{{ isPaidByCustomer[i] ? "PAID" : "UNPAID" }}</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        [class.disabled-customer-bill]="isPaidByCustomer[i]"
+        formArrayName="items"
+        class="card-body payment-card__body d-flex flex-column gap-3"
+        [class.scroll-max-height]="items(i).controls.length > 2"
+      >
+        <div
+          class="d-inline-flex gap-2 justify-content-between"
+          *ngFor="let item of items(i).controls; let j = index"
+          [formGroupName]="j"
+        >
+          <div class="justify-content-start">
+            <label for="items" class="form-label">Items</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="itemName"
+              placeholder="Item name"
+            />
+          </div>
+          <div class="justify-content-end">
+            <label for="items" class="form-label">No. of items</label>
+            <div class="flex-grow">
+              <input
+                class="form-control"
+                type="number"
+                formControlName="itemCount"
+                name="itemCount"
+                id="itemCount"
+                placeholder="Quantity"
+              />
+              <app-button
+                class="flex-shrink"
+                [isDelete]="false"
+                (onEmitClickBtn)="onDeleteItem(i, j)"
+              >
+                <i style="color: red" class="bi bi-trash-fill"></i>
+              </app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between p-2">
+        <app-button (onEmitClickBtn)="addItem(i)"> + Add Item </app-button>
+
+        <app-button
+          *ngIf="!isPaidByCustomer[i]"
+          class="payment-card__button payment-card--paid"
+          (onEmitClickBtn)="paidByCustomer('paid', i)"
+        >
+          Paid
+        </app-button>
+
+        <app-button
+          *ngIf="isPaidByCustomer[i]"
+          (onEmitClickBtn)="onClickEditBtn(customer.get('isPaid')?.value, i)"
+        >
+          Edit
+        </app-button>
+      </div>
+    </div>
+  </div>
+
+  <app-button (onEmitClickBtn)="addCustomer()">+ Add New Customer </app-button>
+</form>
